@@ -58,6 +58,9 @@ main: {
     #print Dumper(@components);
     #         1         50 AUTOFLOWREDUCE	
     #         0         0         0       STRESS PERIOD 1  
+    my $comp0  = $components[0]//"";
+    my $comp1  = $components[1]//"";
+    my $comp2  = $components[2]//"";
     my $stress = $components[3]//"";
     my $period = $components[4]//"";
     my $period_number = $components[5]//"";
@@ -66,12 +69,12 @@ main: {
     my $output;
     if ( $row == 1 ) {
       my $spacer = "";
-      $output = sprintf("%10s%9s%-3s%-21s",$components[0],$spacer,$components[1],$components[2]);  
+      $output = sprintf("%10s%9s%-3s%-21s",$comp0,$spacer,$comp1,$comp2);  
     }
     else{ 
       
-      my $wellval = ( $components[1] < 0)? sprintf("%4.3f",$components[1]): $components[1];
-      $output = sprintf("%10s%10s%10s%21s%-3s",$components[0],$wellval,$components[2]//"",$stressperiod,$period_number);  
+      my $wellval = ( $comp1 < 0)? sprintf("%4.3f",$comp1): $comp1;
+      $output = sprintf("%10s%10s%10s%21s%-3s",$comp0,$wellval,$comp2,$stressperiod,$period_number);  
     }
     
     print $outfh "$output\n";
